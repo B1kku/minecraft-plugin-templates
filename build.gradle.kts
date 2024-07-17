@@ -4,12 +4,14 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 group = "your.group.name"
 version = "0.0.1"
 description = "Asd"
-
 val projectName = "ProjectName"
+val authors = listOf("Author1")
+
 // Any extra variables accessible to resources
 val extras = mapOf(
   "projectName" to projectName,
   "main" to "${project.group}.${projectName.toLowerCase()}.${projectName}"
+  "authors" to authors.joinToString(", ")
 )
 
 extra.apply { extras.forEach { (key, value) -> set(key, value) }}

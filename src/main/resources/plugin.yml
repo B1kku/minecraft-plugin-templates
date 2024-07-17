@@ -1,6 +1,7 @@
-api-version: 1.20
 name: ${projectName}
 version: ${version}
 main: ${main}
-author: Author
+authors: [${authors}]
+description: ${description}
+api-version: 1.20
 load: STARTUP
