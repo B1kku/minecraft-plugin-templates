@@ -10,7 +10,7 @@ val authors = listOf("Author1")
 // Any extra variables accessible to resources
 val extras = mapOf(
   "projectName" to projectName,
-  "main" to "${project.group}.${projectName.toLowerCase()}.${projectName}"
+  "main" to "${project.group}.${projectName.toLowerCase()}.${projectName}",
   "authors" to authors.joinToString(", ")
 )
 
