@@ -1,17 +1,14 @@
-This project is intended as a barebones Kotlin plugin template for PaperMC
+This project is intended as a barebones Java plugin template for PaperMC
 - Nothing that is not specifically essential should be added here.
 - Gradle should expand most plugin.yml base variables since it shares most anyways.
 
-I found most templates out there using kotlin were outdated or had way too much stuff in them,
-which is not bad, but I prefer to just change as few things as possible and be ready to go.
-Another reason is most people just use a proper IDE for Java/Kotlin and I use Neovim because
-I don't value my sanity, therefore I get to setup everything manually :).
+There's also a kotlin template on a different branch.
 
 ### Setup
 - Delete flake.nix and flake.lock if you're not using nix.
 
 - Replace build.gradle variables to suit your needs, and move your project such that
-your main file is on `src/main/kotlin/your/group/name/projectname/ProjectName.kt`.
+your main file is on `src/main/java/your/group/name/projectname/ProjectName.java`.
 
 - Change API version on plugin.yml and the paper repository (Not done by gradle yet).
 

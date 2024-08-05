@@ -1,6 +1,3 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
-
 group = "your.group.name"
 version = "0.0.1"
 description = "Asd"
@@ -17,17 +14,22 @@ val extras = mapOf(
 extra.apply { extras.forEach { (key, value) -> set(key, value) }}
 
 plugins {
-  kotlin("jvm") version "2.0.0"
+  id("java")
+}
+
+java {
+  toolchain {
+      languageVersion.set(JavaLanguageVersion.of(17))
+  }
 }
 
 repositories {
   mavenCentral()
-    maven("https://repo.papermc.io/repository/maven-public/")
+  maven("https://repo.papermc.io/repository/maven-public/")
 }
 
 dependencies {
-  implementation(kotlin("stdlib"))
-    compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
+  compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
 }
 
 tasks {
@@ -36,12 +38,9 @@ tasks {
       expand(project.properties)
     }
   }
-  compileKotlin {
-    compilerOptions {
-      jvmTarget.set(JvmTarget.JVM_17)
-    }
+  compileJava {
+    options.encoding = "UTF-8"
   }
-  
 }
 
 
