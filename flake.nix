@@ -8,7 +8,7 @@
     {
       devShells.x86_64-linux.default = pkgs.mkShell {
         packages = with pkgs; [
-          (gradle.override { java = zulu17; })
+          (gradle.override { java = jdk21; })
         ];
       };
     };

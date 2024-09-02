@@ -1,26 +1,18 @@
+import xyz.jpenilla.resourcefactory.bukkit.BukkitPluginYaml
+
+plugins {
+  id("java-library")
+  // Generates plugin.yml based on the Gradle config
+  id("xyz.jpenilla.resource-factory-bukkit-convention") version "1.1.1"
+}
+
 group = "your.group.name"
 version = "0.0.1"
 description = "Asd"
 val projectName = "ProjectName"
-val authors = listOf("Author1")
-
-// Any extra variables accessible to resources
-val extras = mapOf(
-  "projectName" to projectName,
-  "main" to "${project.group}.${projectName.toLowerCase()}.${projectName}",
-  "authors" to authors.joinToString(", ")
-)
-
-extra.apply { extras.forEach { (key, value) -> set(key, value) }}
-
-plugins {
-  id("java")
-}
 
 java {
-  toolchain {
-      languageVersion.set(JavaLanguageVersion.of(17))
-  }
+  toolchain.languageVersion = JavaLanguageVersion.of(21)
 }
 
 repositories {
@@ -29,21 +21,14 @@ repositories {
 }
 
 dependencies {
-  compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
+  compileOnly("io.papermc.paper:paper-api:1.20.6-R0.1-SNAPSHOT")
 }
 
 tasks {
-  processResources {
-    filesMatching("**/plugin.yml") {
-      expand(project.properties)
-    }
-  }
-  compileJava {
-    options.encoding = "UTF-8"
+  bukkitPluginYaml {
+    main = "${project.group}.${projectName.lowercase()}.${projectName}"
+    load = BukkitPluginYaml.PluginLoadOrder.STARTUP
+    authors.add("Author1")
+    apiVersion = "1.20"
   }
 }
-
-
-
-
-

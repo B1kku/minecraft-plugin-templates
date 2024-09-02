@@ -1,8 +1,0 @@
-name: ${projectName}
-version: ${version}
-main: ${main}
-authors: [${authors}]
-description: ${description}
-api-version: 1.20
-# Remove if using dependencies
-load: STARTUP
