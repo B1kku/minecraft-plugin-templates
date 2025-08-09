@@ -1,23 +1,21 @@
-import xyz.jpenilla.resourcefactory.bukkit.BukkitPluginYaml
-// import xyz.jpenilla.resourcefactory.bukkit.Permission // Example for default permission level
+import xyz.jpenilla.resourcefactory.paper.PaperPluginYaml
+// import xyz.jpenilla.resourcefactory.paper.PaperPluginYaml.Load
 
 plugins {
   id("java-library")
-  // Generates plugin.yml based on the Gradle config
-  id("xyz.jpenilla.resource-factory-bukkit-convention") version "1.1.1"
+  // Generates paper-plugin.yml based on the Gradle config
+  id("xyz.jpenilla.resource-factory-paper-convention") version "1.3.0"
 }
 
 group = "your.group.name"
 version = "0.0.1"
-description = "Asd"
+description = "Some description"
 val projectName = "ProjectName"
+val api = "1.21.8"
+
 
 java {
   toolchain.languageVersion = JavaLanguageVersion.of(21)
-}
-
-dependencies {
-  compileOnly("io.papermc.paper:paper-api:1.20.6-R0.1-SNAPSHOT")
 }
 
 repositories {
@@ -25,25 +23,27 @@ repositories {
   maven("https://repo.papermc.io/repository/maven-public/")
 }
 
+dependencies {
+  compileOnly("io.papermc.paper:paper-api:${api}-R0.1-SNAPSHOT")
+}
+
 tasks {
   compileJava {
     options.encoding = "UTF-8"
   }
-  bukkitPluginYaml {
+  paperPluginYaml {
+    name = "${projectName}"
     main = "${project.group}.${projectName.lowercase()}.${projectName}"
-    load = BukkitPluginYaml.PluginLoadOrder.STARTUP
-    authors = listOf("Author1")
-    apiVersion = "1.20"
-/* Since the plugin has no documentation here's some examples.
-    commands.create("examplecommand") {
-      description = "Example command description"
-      permission = "projectname.examplepermission"
-    }
-    permissions.create("projectname.examplepermission") {
-      description = "Example permission"
-      // Not really needed since this is the default anyways
-      default = Permission.Default.OP
-    }
- */
+    authors = listOf("ExampleAuthor")
+    version = "${project.version}"
+    apiVersion = "${api}"
+    // Examples for some optional settings
+    // bootstrapper = "${project.group}.${projectName.lowercase()}.Bootstrapper"
+    // prefix = "Example"
+    // val serverDeps = listOf("LuckPerms" to Load.BEFORE)
+    // dependencies {
+    //   serverDeps.forEach { (dep, load) -> server(dep, load)}
+    // }
   }
 }
+

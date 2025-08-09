@@ -1,0 +1,9 @@
+root = true
+
+[*.java]
+indent_size = 4
+tab_width = 4
+# Yaml doesn't work without 2 indent size
+[*.yaml]
+indent_size = 2
+tab_width = 2
